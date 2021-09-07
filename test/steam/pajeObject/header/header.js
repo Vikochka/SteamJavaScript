@@ -30,7 +30,8 @@ class Header extends BasePage {
     }
 
     async clickOnInstallSteam() {
-       await this.btnInstallSteamclick();
+        await this.btnInstallSteam.waitForDisplayed();
+       await this.btnInstallSteam.click();
     }
 
     open() {

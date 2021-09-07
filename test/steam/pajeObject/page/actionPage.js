@@ -8,39 +8,44 @@ class ActionPage extends BasePage {
     }
 
     async selectGameWithMaxDiscount() {
-        var discountList = new Array()
+        var discountList = new Array();
+        var convertArray = new Array();
         discountList = await this.lblDiscount;
         console.log(discountList.length);
         var convert = 0;
-        var max;
-        var indexOfMax = 0;
+        var max = 0;
+        var count = 0;
+        var indexOfMax;
         for (let i = 0; i < discountList.length; i++) {
             if (discountList[i] !== undefined) {
                 let strDiscount = await discountList[i].getText();
-                //    let discount = await strDiscount.split("%");
-                var array = new Array(String);
-                array = await strDiscount.split("%");
-                for (let j = 0; j < array.length; j++) {
-                    let convert = await parseInt(array[j]);
-                    convert = convert - convert - convert;
-                }
-                discountList.push(convert);
-                console.log(discountList.push(convert))
-                max = Math.max(discountList)
-                console.log("Max discount of game = " + max);
-                var count = discountList.reduce(discountList, max);
-                if (count !== 1) {
-                    indexOfMax = Math.random(count);
-                    console.log("Games with the same maximum discount = " + count);
-                } else {
-                    indexOfMax = discountList.indexOf(max)
-                }
-                discountList.indexOf(indexOfMax).click();
+                let discount = await strDiscount.split("%");
+                console.log(discount)
+                let convert = parseInt(discount);
+                convert = convert - convert - convert;
+                convertArray.push(convert)
             }
-
         }
-
+        console.log(convertArray)
+        console.log(convertArray.length)
+        if (convertArray !== undefined) {
+            for (let i = 0; i < convertArray.length; i++) {
+                if (convertArray[i] > max) {
+                    max = convertArray[i];
+                    count = 1;
+                } else if (convertArray[i] === max && convertArray[i - 1] > max) {
+                    count++;
+                    max = convertArray[i];
+                }
+            }
+        }
+        console.log(count)
+        console.log("Max discount of game = " + max);
+        indexOfMax = await convertArray.indexOf(max);
+        console.log("Index of max discount = " + indexOfMax);
+        discountList[indexOfMax].click();
     }
+
 
     open() {
         return super.open('actionPage');
