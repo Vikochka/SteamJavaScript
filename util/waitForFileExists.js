@@ -1,7 +1,5 @@
-const fs = require('fs')
-const path = require('path')
-
-module.exports = function waitForFileExists(filePath, timeout) {
+// pulled from https://stackoverflow.com/a/47764403
+function waitForFileExists(filePath, timeout) {
     return new Promise(function (resolve, reject) {
 
         var timer = setTimeout(function () {

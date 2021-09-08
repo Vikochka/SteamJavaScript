@@ -9,6 +9,7 @@ describe('Browser should open main page', () => {
         await header.selectLanguage();
         await mainMenu.navigateSection();
         await actionPage.selectGameWithMaxDiscount();
+
         await header.clickOnInstallSteam();
         await downloadPage.downloadSteam();
     });
