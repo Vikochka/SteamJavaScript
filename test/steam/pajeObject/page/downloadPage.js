@@ -26,11 +26,10 @@ class DownloadPage extends BasePage {
         const fileName = splitPath.splice(-1)[0]
         console.log("FIle name = " + fileName)
 
-        const filePath =await path.join(global.downloadDir, fileName)
+        const filePath = path.join(global.downloadDir, fileName)
         console.log("File path = " + filePath)
 
-        browser.call(function (){
-            // call our custom function that checks for the file to exist
+        browser.call(function () {
             return waitForFileExists(filePath, 60000)
         });
     }

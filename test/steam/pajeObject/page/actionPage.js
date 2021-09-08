@@ -41,11 +41,46 @@ class ActionPage extends BasePage {
         }
         console.log(count)
         console.log("Max discount of game = " + max);
-        indexOfMax = await convertArray.indexOf(max);
+        indexOfMax = convertArray.indexOf(max);
         console.log("Index of max discount = " + indexOfMax);
         discountList[indexOfMax].click();
     }
 
+    async maxDiscount(){
+        var list = new Array();
+        var array = new Array();
+        list = await this.lblDiscount;
+        console.log(list.length);
+        var convert = 0;
+        var max = 0;
+        var count = 0;
+        var indexOfMax;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] !== undefined) {
+                let strDiscount = await list[i].getText();
+                let discount = await strDiscount.split("%");
+                console.log(discount)
+                let convert = parseInt(discount);
+                convert = convert - convert - convert;
+                array.push(convert)
+            }
+        }
+        console.log(array)
+        console.log(array.length)
+        if (array !== undefined) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] > max) {
+                    max = array[i];
+                    count = 1;
+                } else if (array[i] === max && array[i - 1] > max) {
+                    count++;
+                    max = array[i];
+                }
+            }
+        }
+        console.log(count)
+        console.log("Max discount of game = " + max);
+    }
 
     open() {
         return super.open('actionPage');

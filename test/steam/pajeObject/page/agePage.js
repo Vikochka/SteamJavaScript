@@ -12,6 +12,14 @@ class AgePage extends BasePage {
 
     async checkAge(interYear) {
         log.info("Check age:");
+        const selectBox = await this.comboBoxYear;
+        console.log(await selectBox.getText('option:checked')); // returns "uno"
+        await selectBox.selectByVisibleText(interYear); //2000
+        console.log(await selectBox.getText('option:checked')); // returns "cuatro"
+    }
+
+    async clickOnViewButton() {
+        await this.btnViewPageTemplateю.click;
     }
 
     async open() {
