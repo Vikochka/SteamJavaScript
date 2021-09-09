@@ -2,7 +2,6 @@ const BasePage = require("./basePage");
 
 class ActionPage extends BasePage {
 
-
     get lblDiscount() {
         return $$("//div[@class='discount_block  discount_block_inline']//div[@class='discount_pct']")
     }
@@ -12,7 +11,6 @@ class ActionPage extends BasePage {
         var convertArray = new Array();
         discountList = await this.lblDiscount;
         console.log(discountList.length);
-        var convert = 0;
         var max = 0;
         var count = 0;
         var indexOfMax;

@@ -2,11 +2,13 @@ const BasePage = require("../page/basePage");
 
 class MainMenu extends BasePage {
     get lblMenuSectionTemplate() {
-        return $("//a[@class='pulldown_desktop'][contains(text(),'Categories')]")
+        const menuSection = "Categories";
+        return $(`//a[@class='pulldown_desktop'][contains(text(),'${menuSection}')]`)
     };
 
     get lblSubSectionTemplate() {
-        return $("//div[contains(@class,'popup_block_new flyout_tab_flyout responsive_slidedown')]//a[contains(text(),'Action')]")
+        const subSection = "Action";
+        return $(`//div[contains(@class,'popup_block_new flyout_tab_flyout responsive_slidedown')]//a[contains(text(),'${subSection}')]`)
     };
 
     async navigateSection() {

@@ -18,7 +18,7 @@ describe('Steam test', () => {
         const namePage = "app";
         if (page == namePage) {
             await console.log("Age page was opened");
-            await agePage.checkAge(2000);
+            await agePage.checkAge("2000");
             await agePage.clickOnViewButton();
         } else {
             console.log("Game page was opened");

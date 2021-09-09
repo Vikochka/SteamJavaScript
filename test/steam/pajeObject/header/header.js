@@ -6,7 +6,10 @@ class Header extends BasePage {
     }
 
     get btnLanguage() {
-        return $("//a[@class='popup_menu_item tight'][contains(text(),'English')]")
+        var json= new JSON
+        const languageEn =json.languageSelected;//"English";
+
+        return $(`//a[@class='popup_menu_item tight'][contains(text(),'${languageEn}')]`);
     }
 
     get btnInstallSteam() {
@@ -15,6 +18,7 @@ class Header extends BasePage {
 
     async selectLanguage() {
         const language = await this.lblLanguage.getText();
+
         if (language == "язык") {
             console.info("Site opening on russian");
             await this.lblLanguage.waitForDisplayed()
@@ -31,7 +35,7 @@ class Header extends BasePage {
 
     async clickOnInstallSteam() {
         await this.btnInstallSteam.waitForDisplayed();
-       await this.btnInstallSteam.click();
+        await this.btnInstallSteam.click();
     }
 
     open() {
