@@ -1,0 +1,8 @@
+{
+  "URL": 'https://store.steampowered.com',
+  "browser": "chrome",
+  "timeout": 10000,
+  "timeoutElement": 20,
+  "fileSetup": "SteamSetup.exe",
+  "pollingEvery": 200
+}

@@ -1,11 +1,11 @@
 const BasePage = require("../../../../framwork/basePage");
 const json = require("../../../resources/testData.json");
-const BaseElement = require("../../../../framwork/elements/baseElement");
+const baseElement = require("../../../../framwork/elements/baseElement");
 
 class Header extends BasePage {
     get lblLanguage() {
-        return BaseElement.findElement("#language_pulldown");
-       // return $("#language_pulldown")
+    //    return baseElement.findElement("#language_pulldown");
+        return $("#language_pulldown");
     }
 
     get btnLanguage() {

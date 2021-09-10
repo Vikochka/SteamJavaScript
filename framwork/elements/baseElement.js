@@ -1,16 +1,13 @@
 const BasePage = require("../basePage");
 
-module.exports = class BaseElement extends BasePage {
-
-    element;
+class BaseElement extends BasePage {
 
     async findElement() {
-        this.element = await $(`${loc}`);
+        const element = $(`${loc}`);
         const wait = await element.waitForDisplayed();
         if (!wait) {
             console.log("Element: " + element + " don't found")
         }
-
     }
 
     async open() {
