@@ -1,15 +1,15 @@
-const BasePage = require("../page/basePage");
+const BasePage = require("../../../../framwork/basePage");
+const json = require("../../../resources/testData.json");
+const BaseElement = require("../../../../framwork/elements/baseElement");
 
 class Header extends BasePage {
     get lblLanguage() {
-        return $("#language_pulldown")
+        return BaseElement.findElement("#language_pulldown");
+       // return $("#language_pulldown")
     }
 
     get btnLanguage() {
-        var json= new JSON
-        const languageEn =json.languageSelected;//"English";
-
-        return $(`//a[@class='popup_menu_item tight'][contains(text(),'${languageEn}')]`);
+        return $(`//a[@class='popup_menu_item tight'][contains(text(),${JSON.stringify(json.languageSelected)})]`);
     }
 
     get btnInstallSteam() {
@@ -21,13 +21,12 @@ class Header extends BasePage {
 
         if (language == "язык") {
             console.info("Site opening on russian");
-            await this.lblLanguage.waitForDisplayed()
+            await this.lblLanguage.waitForDisplayed();
             await this.lblLanguage.click();
             console.info("Click on lbl ");
             await this.btnLanguage.waitForDisplayed()
             await this.btnLanguage.click();
             console.info("Select lang");
-
         } else {
             console.info("Site opening on english");
         }

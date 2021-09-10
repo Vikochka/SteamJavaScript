@@ -1,14 +1,14 @@
-const BasePage = require("../page/basePage");
+const BasePage = require("../../../../framwork/basePage");
+const json = require("../../../resources/testData.json");
 
 class MainMenu extends BasePage {
     get lblMenuSectionTemplate() {
-        const menuSection = "Categories";
-        return $(`//a[@class='pulldown_desktop'][contains(text(),'${menuSection}')]`)
+        return $(`//a[@class='pulldown_desktop'][contains(text(),${JSON.stringify(json.menuSection)})]`)
     };
 
     get lblSubSectionTemplate() {
-        const subSection = "Action";
-        return $(`//div[contains(@class,'popup_block_new flyout_tab_flyout responsive_slidedown')]//a[contains(text(),'${subSection}')]`)
+        return $(`//div[contains(@class,'popup_block_new flyout_tab_flyout responsive_slidedown')]//a[contains(text(),
+        ${JSON.stringify(json.sectionCase)})]`)
     };
 
     async navigateSection() {

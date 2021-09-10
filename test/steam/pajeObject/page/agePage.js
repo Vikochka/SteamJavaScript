@@ -1,4 +1,5 @@
-const BasePage = require("./basePage");
+const BasePage = require("../../../../framwork/basePage");
+const json = require("../../../resources/testData.json");
 
 class AgePage extends BasePage {
 
@@ -10,11 +11,11 @@ class AgePage extends BasePage {
         return $("#ageYear");
     }
 
-    async checkAge(interYear) {
+    async checkAge() {
         log.info("Check age:");
         const selectBox = await this.comboBoxYear;
         console.log(await selectBox.getText('option:checked'));
-        await selectBox.selectByVisibleText(interYear); //2000
+        await selectBox.selectByVisibleText(JSON.stringify(json.year));
         console.log(await selectBox.getText('option:checked'));
     }
 

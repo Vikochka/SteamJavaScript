@@ -1,5 +1,6 @@
-const BasePage = require("./basePage");
+const BasePage = require("../../../../framwork/basePage");
 const actionPage = require("../page/actionPage")
+
 class GamePage extends BasePage {
     get lblGameDiscount() {
         return $("//div[@class='game_area_purchase_game']//div[@class='discount_block game_purchase_discount']//div[@class='discount_pct']")
