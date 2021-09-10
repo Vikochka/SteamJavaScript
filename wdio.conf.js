@@ -1,7 +1,7 @@
 // Load the libraries we need for path/filesystem manipulation
 const path = require('path')
 const fs = require('fs')
-const rmdir = require('./util/rmdir')
+const rmdir = require('./framework/util/rmdir')
 
 // Store the directory path in a global, which allows us to access this path inside our tests
 global.downloadDir = path.join(__dirname, 'download');

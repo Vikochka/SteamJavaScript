@@ -1,6 +1,6 @@
-const BasePage = require("../../../../framwork/basePage");
+const BasePage = require("../../../../framework/basePage");
 const json = require("../../../resources/testData.json");
-const baseElement = require("../../../../framwork/elements/baseElement");
+const baseElement = require("../../../../framework/elements/baseElement");
 
 class Header extends BasePage {
     get lblLanguage() {
