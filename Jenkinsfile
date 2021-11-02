@@ -11,6 +11,6 @@ node {
   stage('Build') {
            git 'https://github.com/Vikochka/SteamJavaScript.git'
            bat "npm install"
-           bat "npx wdio"
+           bat "npx wdio run ./wdio.conf.js"
   }
 }
