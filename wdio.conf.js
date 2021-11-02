@@ -1,11 +1,3 @@
-// Load the libraries we need for path/filesystem manipulation
-const path = require('path')
-const fs = require('fs')
-const rmdir = require('./framework/util/rmdir')
-
-// Store the directory path in a global, which allows us to access this path inside our tests
-global.downloadDir = path.join(__dirname, 'download');
-
 exports.config = {
     //
     // ====================
@@ -65,28 +57,12 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        acceptInsecureCerts: true,
+        acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-        'goog:chromeOptions': {
-            prefs: {
-                'directory_upgrade': true,
-                'prompt_for_download': false,
-                'download.default_directory': downloadDir
-            }
-        }
     }],
-
-    onPrepare: function (config, capabilities) {
-        // make sure download directory exists
-        if (!fs.existsSync(downloadDir)) {
-            // if it doesn't exist, create it
-            fs.mkdirSync(downloadDir);
-        }
-    },
-
     //
     // ===================
     // Test Configurations
@@ -158,6 +134,8 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
 
+
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -197,8 +175,9 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
+     * @param {String} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs) {
+    // beforeSession: function (config, capabilities, specs, cid) {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -295,8 +274,4 @@ exports.config = {
      */
     //onReload: function(oldSessionId, newSessionId) {
     //}
-
-    onComplete: function () {
-        rmdir(downloadDir)
-    }
 }

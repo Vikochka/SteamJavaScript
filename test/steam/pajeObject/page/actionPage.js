@@ -1,4 +1,4 @@
-const BasePage = require("../../../../framework/basePage");
+const BasePage = require("../../../../../framework/basePage");
 
 class ActionPage extends BasePage {
 

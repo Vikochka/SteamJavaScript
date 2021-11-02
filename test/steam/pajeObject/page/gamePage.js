@@ -1,5 +1,5 @@
-const BasePage = require("../../../../framework/basePage");
-const actionPage = require("../page/actionPage")
+const BasePage = require("../../../../../framework/basePage");
+const actionPage = require("./actionPage")
 
 class GamePage extends BasePage {
     get lblGameDiscount() {

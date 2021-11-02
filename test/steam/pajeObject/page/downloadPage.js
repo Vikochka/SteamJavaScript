@@ -1,4 +1,4 @@
-const BasePage = require("../../../../framework/basePage");
+const BasePage = require("../../../../../framework/basePage");
 const path = require('path')
 const fs = require('fs')
 const {URL} = require('url')
