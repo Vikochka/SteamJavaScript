@@ -1,3 +1,10 @@
+// Load the libraries we need for path/filesystem manipulation
+const path = require('path')
+const fs = require('fs')
+// Store the directory path in a global, which allows us to access this path inside our tests
+global.downloadDir = path.join(__dirname, 'download');
+
+
 exports.config = {
     //
     // ====================
@@ -57,11 +64,20 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
+        'goog:chromeOptions': {
+            prefs: {
+                'directory_upgrade': true,
+                'prompt_for_download': false,
+                'download.default_directory': downloadDir,
+                'profile.default_content_settings.popups0': 0,
+                'safebrowsing.enabled': true
+            }
+        }
     }],
     //
     // ===================

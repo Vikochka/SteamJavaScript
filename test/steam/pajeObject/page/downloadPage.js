@@ -10,28 +10,22 @@ class DownloadPage extends BasePage {
     }
 
     async downloadSteam() {
-        await this.btnInstallSteam.click();
-        console.log("Click download button")
 
+        var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+        const xhr = new XMLHttpRequest()
         const downloadHref = await this.btnInstallSteam.getAttribute('href');
         console.log("Href = " + downloadHref)
-
         const downloadUrl = new URL(downloadHref);
         console.log("URL = " + downloadUrl)
-
-        const fullPath = downloadUrl.pathname;
-        console.log("Full path = " + fullPath)
-
-        const splitPath = fullPath.split('/')
-        const fileName = splitPath.splice(-1)[0]
-        console.log("FIle name = " + fileName)
-
-        const filePath = path.join(global.downloadDir, fileName)
-        console.log("File path = " + filePath)
-
-        browser.call(function () {
-            return waitForFileExists(filePath, 60000)
-        });
+        xhr.open('GET', downloadHref)
+        xhr.onloadend = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log(xhr.DONE);
+            }else {
+                console.log(xhr.readyState + "ERROR")
+            }
+        }
+        xhr.send()
     }
 
     async open() {
