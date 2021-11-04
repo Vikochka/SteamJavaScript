@@ -1,4 +1,4 @@
-const BasePage = require("../../../../../framework/basePage");
+const BasePage = require("../../../../framework/basePage");
 const json = require("../../../resources/testData.json");
 
 class MainMenu extends BasePage {

@@ -1,4 +1,4 @@
-const BasePage = require("../../../../../framework/basePage");
+const BasePage = require("../../../../framework/basePage");
 const actionPage = require("./actionPage")
 
 class GamePage extends BasePage {
